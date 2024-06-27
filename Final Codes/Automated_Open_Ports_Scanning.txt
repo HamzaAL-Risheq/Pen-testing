@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "Enter the Target IP to scan it >> "
+read Target_IP
+
+echo "Scan started..."
+
+# Use nmap to scan the target IP and save only the open port numbers in a new text file named 'open_ports'
+nmap -p- $Target_IP | grep ^[0-9] | cut -d '/' -f 1 > open_ports
+
+echo "Scan finished"
